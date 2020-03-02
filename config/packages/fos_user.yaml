@@ -1,0 +1,20 @@
+# app/config/config.yml
+fos_user:
+  db_driver: orm
+  firewall_name: main
+  user_class: App\Entity\User
+  from_email:
+    address: "victoria.str@inbox.ru"
+    sender_name: "victoria.str"
+  registration:
+      confirmation:
+        enabled: true
+        template:   FOSUserBundle:Registration:email.txt.twig
+        from_email:
+          address:        "victoria.str@inbox.ru"
+          sender_name:    "victoria.str"
+  service:
+    mailer: fos_user.mailer.twig_swift
+  resetting:
+    email:
+      template:   FOSUserBundle:Resetting:email.txt.twig
