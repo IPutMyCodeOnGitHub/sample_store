@@ -11,7 +11,7 @@
 
 ###< symfony/web-server-bundle ###
 /.idea/
-
+/docker/data/mysql/
 
 ###> symfony/web-server-bundle ###
 /.web-server-pid
