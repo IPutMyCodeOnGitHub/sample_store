@@ -1,0 +1,19 @@
+jms_serializer:
+    property_naming:
+        separator:  _
+        lower_case: true
+    metadata:
+        cache: file
+        debug: "%kernel.debug%"
+        file_cache:
+            dir: "%kernel.cache_dir%/serializer"
+        directories:
+            SimpleSeller:
+                namespace_prefix: SimpleSeller\CoreBundle\Entity
+                path: "%kernel.project_dir%/config/packages/serializer/SimpleSeller"
+            App:
+                namespace_prefix: App\Entity
+                path: "%kernel.project_dir%/config/packages/serializer/App"
+            FOSUserBundle:
+                namespace_prefix: FOS\UserBundle
+                path: "%kernel.project_dir%/config/packages/serializer/FosUserBundle"

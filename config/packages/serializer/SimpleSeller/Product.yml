@@ -1,0 +1,13 @@
+SimpleSeller\CoreBundle\Entity\Product:
+  exclusion_policy: ALL
+  properties:
+    id:
+      expose: true
+    name:
+      expose: true
+    category:
+      expose: true
+    description:
+      expose: true
+    price:
+      expose: true
