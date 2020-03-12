@@ -1,0 +1,10 @@
+SimpleSeller\CoreBundle\Entity\Category:
+  properties:
+    id:
+      expose: true
+    name:
+      expose: true
+    products:
+      exclude: true
+    photoUrl:
+      exclude: true

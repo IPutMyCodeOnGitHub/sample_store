@@ -1,0 +1,2 @@
+App\Entity\Category:
+  exclusion_policy: ALL

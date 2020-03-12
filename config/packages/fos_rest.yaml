@@ -1,0 +1,12 @@
+fos_rest:
+  body_listener: true
+  view:
+    view_response_listener: true
+  serializer:
+    serialize_null: true
+  body_converter:
+    enabled: true
+  format_listener:
+    rules:
+      - { path: '^/my',  priorities: ['json'], fallback_format: json, prefer_extension: true }
+      - { path: '^/catalog',  priorities: ['json'], fallback_format: json, prefer_extension: true }

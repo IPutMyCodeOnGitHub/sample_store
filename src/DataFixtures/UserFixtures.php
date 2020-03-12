@@ -20,6 +20,7 @@ class UserFixtures extends Fixture
         $admin->addRole('ROLE_ADMIN');
 
         $manager->persist($admin);
+        $this->addReference(User::class . '_000', $admin);
         $manager->flush();
     }
 }
