@@ -111,6 +111,9 @@
     "friendsofsymfony/user-bundle": {
         "version": "v2.1.2"
     },
+    "gesdinet/jwt-refresh-token-bundle": {
+        "version": "v0.9.1"
+    },
     "hoa/compiler": {
         "version": "3.17.08.08"
     },
@@ -201,7 +204,7 @@
         "version": "2.2.3"
     },
     "php": {
-        "version": "7.2"
+        "version": "7.3"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -272,6 +275,9 @@
     },
     "symfony/event-dispatcher-contracts": {
         "version": "v1.1.7"
+    },
+    "symfony/expression-language": {
+        "version": "v4.4.5"
     },
     "symfony/filesystem": {
         "version": "v5.0.4"

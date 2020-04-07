@@ -1,0 +1,12 @@
+App\DataTransferObject\CartToOrderDTO:
+  properties:
+    address:
+      - NotBlank: ~
+      - Type: string
+    phoneNumber:
+      - NotBlank: ~
+      - Type: string
+    comment:
+      - Type: string
+    userId:
+      - Type: integer

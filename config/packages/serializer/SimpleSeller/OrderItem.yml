@@ -1,0 +1,18 @@
+SimpleSeller\CoreBundle\Entity\OrderItem:
+  exclusion_policy: ALL
+  properties:
+    id:
+      expose: true
+      groups: ['order', 'orderItem']
+    product:
+      expose: true
+      groups: ['order', 'orderItem']
+    price:
+      expose: true
+      groups: ['orderItem']
+    quantity:
+      expose: true
+      groups: ['order', 'orderItem']
+    order:
+      expose: true
+      groups: ['orderItem']

@@ -1,10 +1,12 @@
 SimpleSeller\CoreBundle\Entity\Category:
+  exclusion_policy: ALL
   properties:
     id:
       expose: true
+      groups: ['category', 'product', 'orderItem']
     name:
       expose: true
+      groups: ['category', 'product', 'productByCategory']
     products:
-      exclude: true
-    photoUrl:
-      exclude: true
+      expose: true
+      groups: ['category']

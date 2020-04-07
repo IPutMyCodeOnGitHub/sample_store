@@ -20,7 +20,7 @@ class OrderFixtures extends Fixture
             $order->setAddress("street_" . $i);
             $order->setPhoneNumber("+79996669966");
             $order->setCreatedAt(new \DateTime());
-            $order->setStatus(1);
+            $order->setStatus(0);
 
             $manager->persist($order);
             $this->addReference(Order::class . '_' . $i, $order);

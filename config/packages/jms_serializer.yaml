@@ -14,6 +14,9 @@ jms_serializer:
             App:
                 namespace_prefix: App\Entity
                 path: "%kernel.project_dir%/config/packages/serializer/App"
+            DTO:
+                namespace_prefix: App\DataTransferObject
+                path: "%kernel.project_dir%/config/packages/serializer/DTO"
             FOSUserBundle:
                 namespace_prefix: FOS\UserBundle
                 path: "%kernel.project_dir%/config/packages/serializer/FosUserBundle"

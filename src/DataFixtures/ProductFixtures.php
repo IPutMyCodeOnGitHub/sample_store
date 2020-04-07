@@ -17,7 +17,7 @@ class ProductFixtures extends Fixture
             $product = new Product('Product_' . $i,
                 'Description_' . $i,
                 $category,
-                $i * 100 + $i);
+                $i * 100 + 10);
 
             $manager->persist($product);
             $this->addReference(Product::class . '_' . $i, $product);

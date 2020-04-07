@@ -34,3 +34,27 @@
     http://localhost:8080/catalog/products - список продуктов
     http://localhost:8080/catalog/categories - список категорий 
     http://localhost:8080/my/orders - список заказов (для авторизированного пользователя)  
+    
+
+5. *Разработка API (advanced)*
+    
+    Пример команды для получения JWT-токена:
+    curl -X POST -H "Content-Type: application/json" http://localhost:8080/auth/login_check -d '{"username":"user_1@mail.com","password":"123456"}'
+
+    В соответствии с мокапами созданы необходимые методы api:
+    1) GET http://localhost:8080/catalog/products - список продуктов
+       GET http://localhost:8080/catalog/categories - список категорий
+       
+    2) GET http://localhost:8080/catalog/categories/{category_id} - список продуктов из категории category_id
+    
+    3) GET http://localhost:8080/catalog/products/{product_id} - вывод продукта product_id
+    
+    4) POST http://localhost:8080/my/cart/products/{product_id} - добавление продукта product_id в открытую (status = 0) корзину
+       GET http://localhost:8080/my/cart - вывод всех позиций корзины
+       
+       POST http://localhost:8080/my/orders - создание заказа на основе продуктов из корзины
+       с параметрами comment=<COMMENT>, address=<ADDRESS>, phoneNumber=<PHONE_NUMBER>
+       
+       GET http://localhost:8080/my/orders/{order_id}/items - вывод всех позиций заказа order_id
+       GET http://localhost:8080/my/orders - все заказы пользователя
+       GET http://localhost:8080/my/profile - профиль пользователя

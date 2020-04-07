@@ -10,5 +10,15 @@ use SimpleSeller\CoreBundle\Entity\OrderItem as BaseOrderItem;
  */
 class OrderItem extends BaseOrderItem
 {
+    public function setQuantity(int $quantity): void
+    {
+        $this->quantity = $quantity;
+    }
 
+    public function setOrder(?Order $order): self
+    {
+        $this->order = $order;
+
+        return $this;
+    }
 }
