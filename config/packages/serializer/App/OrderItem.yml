@@ -1,0 +1,2 @@
+App\Entity\OrderItem:
+  exclusion_policy: ALL

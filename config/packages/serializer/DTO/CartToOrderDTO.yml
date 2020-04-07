@@ -1,0 +1,14 @@
+App\DataTransferObject\CartToOrderDTO:
+  exclusion_policy: ALL
+  properties:
+    userId:
+      expose: true
+    address:
+      type: string
+      expose: true
+    phoneNumber:
+      type: string
+      expose: true
+    comment:
+      type: string
+      expose: true

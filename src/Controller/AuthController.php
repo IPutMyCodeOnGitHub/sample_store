@@ -5,13 +5,14 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class ApiAuthController extends AbstractController
+class AuthController extends AbstractController
 {
     /**
-     * @Route("/api/auth", name="api.auth")
+     * @Route("/auth/login", name="login.check")
      */
     public function index()
     {
         return new \RuntimeException("There is no place for you. Go away.");
     }
+
 }

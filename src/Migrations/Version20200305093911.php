@@ -31,6 +31,14 @@ final class Version20200305093911 extends AbstractMigration
         $this->addSql('ALTER TABLE `order` ADD CONSTRAINT FK_F52993989395C3F3 FOREIGN KEY (customer_id) REFERENCES fos_user (id)');
         $this->addSql('ALTER TABLE order_item ADD CONSTRAINT FK_52EA1F098D9F6D38 FOREIGN KEY (order_id) REFERENCES `order` (id)');
         $this->addSql('ALTER TABLE order_item ADD CONSTRAINT FK_52EA1F094584665A FOREIGN KEY (product_id) REFERENCES product (id)');
+        $this->addSql('ALTER TABLE `order` ADD comment VARCHAR(255) DEFAULT NULL');
+        $this->addSql('CREATE TABLE cart (id INT AUTO_INCREMENT NOT NULL, PRIMARY KEY(id), customer_id INT NOT NULL, status INT NOT NULL) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE cart_item (id INT AUTO_INCREMENT NOT NULL, product_id BIGINT NOT NULL, cart_id INT NOT NULL, quantity INT NOT NULL, price DOUBLE PRECISION NOT NULL, INDEX IDX_F0FE25271AD5CDBF (cart_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8 COLLATE `utf8_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('ALTER TABLE cart_item ADD CONSTRAINT FK_F0FE25274584665A FOREIGN KEY (product_id) REFERENCES product (id)');
+        $this->addSql('ALTER TABLE cart_item ADD CONSTRAINT FK_F0FE25271AD5CDBF FOREIGN KEY (cart_id) REFERENCES cart (id)');
+        $this->addSql('ALTER TABLE cart ADD CONSTRAINT FK_BA388B79395C3F3 FOREIGN KEY (customer_id) REFERENCES fos_user (id)');
+        $this->addSql('ALTER TABLE cart DROP INDEX FK_BA388B79395C3F3, ADD INDEX IDX_BA388B79395C3F3 (customer_id)');
+        $this->addSql('ALTER TABLE cart_item RENAME INDEX fk_f0fe25274584665a TO IDX_F0FE25274584665A');
     }
 
     public function down(Schema $schema) : void
@@ -42,10 +50,14 @@ final class Version20200305093911 extends AbstractMigration
         $this->addSql('ALTER TABLE order_item DROP FOREIGN KEY FK_52EA1F094584665A');
         $this->addSql('ALTER TABLE order_item DROP FOREIGN KEY FK_52EA1F098D9F6D38');
         $this->addSql('ALTER TABLE product DROP FOREIGN KEY FK_D34A04AD12469DE2');
+        $this->addSql('ALTER TABLE cart DROP FOREIGN KEY FK_BA388B79395C3F3');
         $this->addSql('DROP TABLE fos_user');
         $this->addSql('DROP TABLE product');
         $this->addSql('DROP TABLE `order`');
         $this->addSql('DROP TABLE order_item');
         $this->addSql('DROP TABLE category');
+        $this->addSql('ALTER TABLE cart_item DROP FOREIGN KEY FK_F0FE25271AD5CDBF');
+        $this->addSql('DROP TABLE cart');
+        $this->addSql('DROP TABLE cart_item');
     }
 }

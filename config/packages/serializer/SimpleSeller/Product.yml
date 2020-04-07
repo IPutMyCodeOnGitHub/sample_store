@@ -3,11 +3,16 @@ SimpleSeller\CoreBundle\Entity\Product:
   properties:
     id:
       expose: true
+      groups: ['product', 'productByCategory', 'order', 'orderItem', 'cartItem', 'cart']
     name:
       expose: true
+      groups: ['product', 'productByCategory', 'order', 'orderItem', 'cartItem', 'cart']
     category:
       expose: true
+      groups: ['product', 'productByCategory']
     description:
       expose: true
+      groups: ['product']
     price:
       expose: true
+      groups: ['product', 'productByCategory']

@@ -1,0 +1,21 @@
+SimpleSeller\CoreBundle\Entity\Order:
+  exclusion_policy: ALL
+  properties:
+    id:
+      expose: true
+      groups: ['order', 'orderItem']
+    items:
+      expose: true
+      groups: ['order']
+    address:
+      expose: true
+      groups: ['order']
+    createdAt:
+      expose: true
+      groups: ['order']
+    customer:
+      expose: true
+      groups: ['order']
+    status:
+      expose: true
+      groups: ['order']

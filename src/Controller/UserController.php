@@ -2,41 +2,38 @@
 
 namespace App\Controller;
 
-use App\Entity\Order;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\UserRepository;
+use FOS\RestBundle\Context\Context;
 use Symfony\Component\Routing\Annotation\Route;
 use FOS\RestBundle\Controller\AbstractFOSRestController;
 use FOS\RestBundle\View\View;
 
 /**
- * @Route("/my", name="user")
+ * @Route("/my", name="customer")
  */
 class UserController extends AbstractFOSRestController
 {
-    /**
-     * @Route("/profile", name="user.profile", methods={"GET"})
-     */
-    public function profileAction()
+    private $userRepository;
+
+    public function __construct(UserRepository $userRepository)
     {
-        return $this->json("");
+        $this->userRepository = $userRepository;
     }
 
     /**
-     * @Route("/orders", name="user.orders", methods={"GET"})
+     * @Route("/profile", name="profile", methods={"GET"})
      */
-    public function ordersAction() //список заказов пользователя
+    public function profileAction()
     {
-        $repository = $this->getDoctrine()->getManager()
-            ->getRepository(Order::class);
+        $userName = $this->getUser()->getUsername();
+        $user = $this->userRepository->findOneByUsername($userName);
 
-        /** @var Order $products */
-        $customer = $this->getUser();
-        $orders = $repository->findBy(
-            ['customer' => $customer]
-        );
+        $view = new View();
+        $context = new Context();
+        $context->addGroup('profile');
+        $view->setData($user);
+        $view->setContext($context);
 
-        $view = View::create();
-        $view->setData($orders);
         return $this->handleView($view);
     }
 }

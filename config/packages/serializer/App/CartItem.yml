@@ -1,0 +1,18 @@
+App\Entity\CartItem:
+  exclusion_policy: ALL
+  properties:
+    id:
+      expose: true
+      groups: ['cart', 'cartItem']
+    product:
+      expose: true
+      groups: ['cart', 'cartItem']
+    price:
+      expose: true
+      groups: ['cart', 'cartItem']
+    quantity:
+      expose: true
+      groups: ['cart', 'cartItem']
+    cart:
+      expose: true
+      groups: ['cartItem']

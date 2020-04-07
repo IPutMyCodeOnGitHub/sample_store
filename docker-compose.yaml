@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 
 services:
     mysql:
@@ -16,25 +16,18 @@ services:
         networks:
             - app
     php:
-        container_name: php
-        build: docker/php/
-        ports:
-            - 9001:9000
+        image: webdevops/php-nginx-dev:7.3
+        working_dir: /app
         restart: always
         volumes:
-            - ./:/var/www/symfony:cached
-            - /etc/timezone:/etc/timezone:cached
+            - ./:/app:rw,cached
+        environment:
+            WEB_DOCUMENT_ROOT: /app/public
         networks:
             - app
-    nginx:
-        build: docker/nginx/
         ports:
-            - 8080:80
-        restart: always
-        volumes_from:
-            - php
-        networks:
-            - app
+            - "8080:80"
+
 networks:
     app:
         driver: bridge
@@ -42,4 +35,3 @@ networks:
 volumes:
     data:
         driver: local
-

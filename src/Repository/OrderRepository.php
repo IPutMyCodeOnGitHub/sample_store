@@ -3,8 +3,10 @@
 namespace App\Repository;
 
 use App\Entity\Order;
+use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
+use function Doctrine\ORM\QueryBuilder;
 
 /**
  * @method Order|null find($id, $lockMode = null, $lockVersion = null)
@@ -19,11 +21,23 @@ class OrderRepository extends ServiceEntityRepository
         parent::__construct($registry, Order::class);
     }
 
+    public function findLastOrder(User $customer): ?Order
+    {
+        $query = $this->createQueryBuilder('o');
+        $query->where('o.customer = :customer')
+            ->andWhere($query->expr()->eq('o.status', Order::ORDER_OPEN))
+            ->setParameter('customer', $customer)
+            ->orderBy('o.createdAt', 'desc')
+            ->getFirstResult();
+
+        return $query->getQuery()
+            ->getOneOrNullResult();
+    }
 
     public function findOneByPhoneNumber($number): ?Order
     {
         $query = $this->createQueryBuilder('o');
-        $query->andWhere('o.phoneNumber = :number')
+        $query->Where('o.phoneNumber = :number')
             ->setParameter('number', $number);
 
         return $query->getQuery()
