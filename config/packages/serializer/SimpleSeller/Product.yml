@@ -3,7 +3,7 @@ SimpleSeller\CoreBundle\Entity\Product:
   properties:
     id:
       expose: true
-      groups: ['product', 'productByCategory', 'order', 'orderItem', 'cartItem', 'cart']
+      groups: ['product', 'category', 'productByCategory', 'order', 'orderItem', 'cartItem', 'cart']
     name:
       expose: true
       groups: ['product', 'productByCategory', 'order', 'orderItem', 'cartItem', 'cart']

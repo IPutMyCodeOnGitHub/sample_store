@@ -16,7 +16,6 @@ use RuntimeException;
 class OrderService
 {
     private $entityManager;
-    private $cartService;
     private $userRepository;
     private $cartRepository;
     private $orderRepository;
@@ -24,18 +23,12 @@ class OrderService
 
     public function __construct(
         EntityManagerInterface $em,
-        CartService $cartService,
         UserRepository $userRepository,
-        CartRepository $cartRepository,
-        OrderRepository $orderRepository,
-        OrderItemRepository $orderItemRepository)
+        CartRepository $cartRepository)
     {
         $this->entityManager = $em;
-        $this->cartService = $cartService;
         $this->userRepository = $userRepository;
         $this->cartRepository = $cartRepository;
-        $this->orderRepository = $orderRepository;
-        $this->orderItemRepository = $orderItemRepository;
     }
 
     public function createOrderByCart(CartToOrderDTO $cartToOrderDTO)
@@ -44,7 +37,7 @@ class OrderService
         $cart = $this->cartRepository->findByUser($customer);
 
         if(!$cart){
-            return new RuntimeException("There is no products in cart to create an order.");
+            throw new RuntimeException("There is no products in cart to create an order.");
         }
 
         $order = new Order();

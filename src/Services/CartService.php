@@ -42,6 +42,7 @@ class CartService
         return $cartItem;
     }
 
+
     public function addCartItem(string $customerName, Product $product)
     {
         $customer = $this->userRepository->findOneByUsername($customerName);

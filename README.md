@@ -58,3 +58,13 @@
        GET http://localhost:8080/my/orders/{order_id}/items - вывод всех позиций заказа order_id
        GET http://localhost:8080/my/orders - все заказы пользователя
        GET http://localhost:8080/my/profile - профиль пользователя
+       
+     6. *Функциональные тесты*
+     
+        Написаны api тесты для всех роутов из п.5, а также модульные тесты для классов CartService и OrderService.
+        
+        make test - запуск всех тестов
+        
+        make api_test - запуск api тестов
+        
+        make unit_test - запуск модульных тестов

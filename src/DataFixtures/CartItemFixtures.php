@@ -2,14 +2,14 @@
 
 namespace App\DataFixtures;
 
-use App\Entity\Order;
-use App\Entity\OrderItem;
+use App\Entity\Cart;
+use App\Entity\CartItem;
 use App\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class OrderItemFixtures extends Fixture implements DependentFixtureInterface
+class CartItemFixtures extends Fixture  implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -18,12 +18,11 @@ class OrderItemFixtures extends Fixture implements DependentFixtureInterface
             $product = $this->getReference(Product::class . '_' . $i);
             $price = $product->getPrice();
 
-            /** @var Order $order */
-            $order = $this->getReference(Order::class . '_' . $i);
+            /** @var Cart $cart */
+            $cart = $this->getReference(Cart::class . '_' . $i);
 
-            $orderItem = new OrderItem($order, $product, $price, 1);
-
-            $manager->persist($orderItem);
+            $cartItem = new CartItem($cart, $product, $price, 1);
+            $manager->persist($cartItem);
         }
         $manager->flush();
     }

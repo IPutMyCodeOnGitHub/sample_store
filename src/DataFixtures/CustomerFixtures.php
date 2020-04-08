@@ -22,7 +22,7 @@ class CustomerFixtures extends Fixture
 
             $manager->persist($customer);
             $this->addReference(User::class . '_' . $i, $customer);
-            $manager->flush();
         }
+        $manager->flush();
     }
 }
