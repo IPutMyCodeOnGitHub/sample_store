@@ -10,3 +10,8 @@ App\DataTransferObject\CartToOrderDTO:
       - Type: string
     userId:
       - Type: integer
+
+App\Entity\Product:
+  properties:
+    id:
+      - Type: integer

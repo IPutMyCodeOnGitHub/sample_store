@@ -5,9 +5,10 @@ namespace App\DataFixtures;
 use App\Entity\Category;
 use App\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 
-class ProductFixtures extends Fixture
+class ProductFixtures extends Fixture implements DependentFixtureInterface
 {
     public function load(ObjectManager $manager)
     {
@@ -21,7 +22,14 @@ class ProductFixtures extends Fixture
 
             $manager->persist($product);
             $this->addReference(Product::class . '_' . $i, $product);
-            $manager->flush();
         }
+        $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return array(
+            CategoryFixtures::class
+        );
     }
 }

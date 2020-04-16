@@ -10,6 +10,9 @@ SimpleSeller\CoreBundle\Entity\Order:
     address:
       expose: true
       groups: ['order']
+    phoneNumber:
+      expose: true
+      groups: ['order']
     createdAt:
       expose: true
       groups: ['order']

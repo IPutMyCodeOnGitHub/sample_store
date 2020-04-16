@@ -27,7 +27,7 @@ class CategoryController extends AbstractFOSRestController
     /**
      * @Route("/categories", name="catalog.categories", methods={"GET"})
      */
-    public function categoriesAction() //список категорий
+    public function categoryList()
     {
         $categories = $this->categoryRepository->findAll();
 
